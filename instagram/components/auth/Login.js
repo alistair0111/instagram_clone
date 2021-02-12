@@ -13,7 +13,7 @@ export class Login extends Component {
             name : ''
         }
 
-        this.onSignUp = this.onSignUp.bind(this);
+        this.onSignUp = this.onSignIn.bind(this);
     }
 
 
@@ -52,4 +52,4 @@ export class Login extends Component {
     }
 }
 
-export default Register
+export default Login;
