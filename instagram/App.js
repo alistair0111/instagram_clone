@@ -4,19 +4,24 @@ import React, { Component }  from 'react';
 import firebase from 'firebase';
 import {  NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from  '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import  LandingScreen from './components/auth/Landing';
 import RegisterScreen from './components/auth/Register';
 import LoginScreen from './components/auth/Login';
 import MainScreen from './components/Main'
+import AddScreen from './components/main/Add';
 
 import { View, Text } from 'react-native';
+
 
 import { Provider } from 'react-redux';
 import {createStore, applyMiddleware } from 'redux';
 import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk';
+
 const store = createStore(rootReducer, applyMiddleware(thunk))
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyBe_9-5trmm06O-aFc3UpcUZfZaVaXLekQ",
@@ -82,7 +87,12 @@ export class App extends Component {
     }
     return (
       <Provider store={store}>
-        <MainScreen />
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName = 'Main'>
+            <Stack.Screen name='Main' component={MainScreen} options={{ headerShown: false }} />
+            <Stack.Screen name='Add' component={AddScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </Provider>
     )
   }
