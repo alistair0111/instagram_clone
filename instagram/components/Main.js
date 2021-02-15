@@ -11,8 +11,6 @@ import FeedScreen from './main/Feed';
 import ProfileScreen from './main/Profile';
 
 
-
-import { color } from 'react-native-reanimated';
 const EmptyScreen = ()  => {
     return null
 }
